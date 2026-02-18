@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --background: 240 10% 8%;
+    --foreground: 220 10% 90%;
+
+    --card: 240 8% 12%;
+    --card-foreground: 220 10% 90%;
+
+    --popover: 240 8% 12%;
+    --popover-foreground: 220 10% 90%;
+
+    --primary: 340 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 6% 18%;
+    --secondary-foreground: 220 10% 85%;
+
+    --muted: 240 6% 15%;
+    --muted-foreground: 220 8% 55%;
+
+    --accent: 340 70% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 340 70% 55%;
+
+    --radius: 0.5rem;
+
+    --cell-done: 145 63% 42%;
+    --cell-missed: 0 72% 51%;
+    --cell-done-glow: 145 63% 42%;
+    --cell-missed-glow: 0 72% 51%;
+
+    --tab-meli: 340 70% 55%;
+    --tab-meli-soft: 340 50% 20%;
+    --tab-younes: 45 85% 55%;
+    --tab-younes-soft: 45 50% 18%;
+
+    --sidebar-background: 240 10% 8%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 340 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 6% 18%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 240 6% 20%;
+    --sidebar-ring: 340 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer utilities {
+  .cell-pop {
+    animation: cellPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes cellPop {
+    0% { transform: scale(0.85); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  .cell-done {
+    background: hsl(var(--cell-done));
+    box-shadow: 0 0 12px hsl(var(--cell-done-glow) / 0.4),
+                inset 0 1px 0 hsl(0 0% 100% / 0.15);
+  }
+
+  .cell-missed {
+    background: hsl(var(--cell-missed));
+    box-shadow: 0 0 12px hsl(var(--cell-missed-glow) / 0.4),
+                inset 0 1px 0 hsl(0 0% 100% / 0.15);
+  }
+
+  .tab-meli .cell-done {
+    box-shadow: 0 0 12px hsl(var(--cell-done-glow) / 0.5);
+  }
+
+  .tab-younes .cell-done {
+    box-shadow: 0 0 12px hsl(var(--cell-done-glow) / 0.5);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+}
