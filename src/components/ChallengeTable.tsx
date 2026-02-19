@@ -30,13 +30,17 @@ export default function ChallengeTable({ tab }: ChallengeTableProps) {
   const [popCells, setPopCells] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    setTasks(loadTasks(tab));
+    const fetchTasks = async () => {
+      const tasks = await loadTasks(tab);
+      setTasks(tasks);
+    };
+    fetchTasks();
   }, [tab]);
 
   const persist = useCallback(
-    (updated: Task[]) => {
+    async (updated: Task[]) => {
       setTasks(updated);
-      saveTasks(tab, updated);
+      await saveTasks(tab, updated);
     },
     [tab]
   );
